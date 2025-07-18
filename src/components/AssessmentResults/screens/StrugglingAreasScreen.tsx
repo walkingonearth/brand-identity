@@ -21,25 +21,17 @@ const getScoreColor = (score: number) => {
 export const StrugglingAreasScreen: React.FC<ScreenProps> = ({ data, onNext }) => {
   return (
     <div className={styles.container}>
-      <motion.div
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className={styles.header}
-      >
+      <div className={styles.header}>
         <h2 className={styles.title}>Areas for Growth</h2>
         <p className={styles.subtitle}>
           These areas show the most opportunity for improvement
         </p>
-      </motion.div>
+      </div>
       
       <div className={styles.areasContainer}>
         {data.topStrugglingAreas.map((area, index) => (
-          <motion.div
+          <div
             key={`${area.pillar}-${area.theme}`}
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 + index * 0.2 }}
             className={styles.areaCard}
           >
             <div className={styles.areaIcon}>
@@ -53,11 +45,9 @@ export const StrugglingAreasScreen: React.FC<ScreenProps> = ({ data, onNext }) =
                   className={styles.scoreBar}
                   style={{ backgroundColor: getScoreColor(area.score) }}
                 >
-                  <motion.div
+                  <div
                     className={styles.scoreProgress}
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(area.score / 5) * 100}%` }}
-                    transition={{ duration: 0.8, delay: 0.6 + index * 0.2 }}
+                    style={{ width: `${(area.score / 5) * 100}%` }}
                   />
                 </div>
                 <span className={styles.scoreText}>
@@ -65,18 +55,13 @@ export const StrugglingAreasScreen: React.FC<ScreenProps> = ({ data, onNext }) =
                 </span>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
       
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.0 }}
-        className={styles.continueButton}
-      >
+      <div className={styles.continueButton}>
         <p className={styles.tapHint}>Tap to continue</p>
-      </motion.div>
+      </div>
     </div>
   )
 }

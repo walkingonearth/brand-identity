@@ -75,25 +75,18 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({ data }) =>
       />
       
       <div className={styles.screenContainer}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentScreen}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className={styles.screen}
-            onClick={handleTap}
-          >
-            <CurrentScreenComponent 
-              data={data}
-              onNext={nextScreen}
-              onPrev={prevScreen}
-              currentScreen={currentScreen}
-              totalScreens={screens.length}
-            />
-          </motion.div>
-        </AnimatePresence>
+        <div
+          className={styles.screen}
+          onClick={handleTap}
+        >
+          <CurrentScreenComponent 
+            data={data}
+            onNext={nextScreen}
+            onPrev={prevScreen}
+            currentScreen={currentScreen}
+            totalScreens={screens.length}
+          />
+        </div>
       </div>
     </div>
   )

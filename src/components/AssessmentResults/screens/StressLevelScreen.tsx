@@ -33,31 +33,16 @@ export const StressLevelScreen: React.FC<ScreenProps> = ({ data, onNext }) => {
   
   return (
     <div className={styles.container}>
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className={styles.iconContainer}
-      >
+      <div className={styles.iconContainer}>
         <div className={styles.icon}>{config.icon}</div>
-      </motion.div>
+      </div>
       
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className={styles.content}
-      >
+      <div className={styles.content}>
         <h2 className={styles.title}>{config.title}</h2>
         <p className={styles.description}>{config.description}</p>
-      </motion.div>
+      </div>
       
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className={styles.progressContainer}
-      >
+      <div className={styles.progressContainer}>
         <div className={styles.progressRing}>
           <svg className={styles.progressSvg} viewBox="0 0 120 120">
             <circle
@@ -68,7 +53,7 @@ export const StressLevelScreen: React.FC<ScreenProps> = ({ data, onNext }) => {
               stroke="rgba(0,0,0,0.1)"
               strokeWidth="8"
             />
-            <motion.circle
+            <circle
               cx="60"
               cy="60"
               r="50"
@@ -77,11 +62,7 @@ export const StressLevelScreen: React.FC<ScreenProps> = ({ data, onNext }) => {
               strokeWidth="8"
               strokeLinecap="round"
               strokeDasharray={`${2 * Math.PI * 50}`}
-              initial={{ strokeDashoffset: 2 * Math.PI * 50 }}
-              animate={{ 
-                strokeDashoffset: 2 * Math.PI * 50 * (1 - config.percentage / 100)
-              }}
-              transition={{ duration: 1.2, delay: 0.8 }}
+              strokeDashoffset={2 * Math.PI * 50 * (1 - config.percentage / 100)}
             />
           </svg>
           <div className={styles.progressText}>
@@ -89,16 +70,11 @@ export const StressLevelScreen: React.FC<ScreenProps> = ({ data, onNext }) => {
             <span className={styles.label}>Stress Level</span>
           </div>
         </div>
-      </motion.div>
+      </div>
       
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.0 }}
-        className={styles.continueButton}
-      >
+      <div className={styles.continueButton}>
         <p className={styles.tapHint}>Tap to continue</p>
-      </motion.div>
+      </div>
     </div>
   )
 }

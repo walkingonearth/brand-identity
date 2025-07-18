@@ -7,35 +7,20 @@ import styles from './welcome-screen.module.scss'
 export const WelcomeScreen: React.FC<ScreenProps> = ({ onNext }) => {
   return (
     <div className={styles.container}>
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className={styles.iconContainer}
-      >
+      <div className={styles.iconContainer}>
         <div className={styles.icon}>✨</div>
-      </motion.div>
+      </div>
       
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className={styles.content}
-      >
+      <div className={styles.content}>
         <h1 className={styles.title}>Your Stress Insights</h1>
         <p className={styles.subtitle}>
           We've analyzed your responses to provide personalized insights about your stress levels and wellbeing.
         </p>
-      </motion.div>
+      </div>
       
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className={styles.continueButton}
-      >
+      <div className={styles.continueButton}>
         <p className={styles.tapHint}>Tap to continue</p>
-      </motion.div>
+      </div>
     </div>
   )
 }
