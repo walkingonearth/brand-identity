@@ -28,16 +28,14 @@ export const WelcomeScreen: React.FC<ScreenProps> = ({ onNext }) => {
         </p>
       </motion.div>
       
-      <motion.button
+      <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}
         className={styles.continueButton}
-        onClick={onNext}
-        whileTap={{ scale: 0.95 }}
       >
-        View My Results
-      </motion.button>
+        <p className={styles.tapHint}>Tap to continue</p>
+      </motion.div>
     </div>
   )
 }

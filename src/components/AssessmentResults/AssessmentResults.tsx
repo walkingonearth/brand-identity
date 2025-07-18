@@ -5,7 +5,7 @@ import { StressLevelScreen } from './screens/StressLevelScreen'
 import { StrugglingAreasScreen } from './screens/StrugglingAreasScreen'
 import { StrengthsScreen } from './screens/StrengthsScreen'
 import { RecommendationsScreen } from './screens/RecommendationsScreen'
-import { NavigationDots } from './NavigationDots'
+import { ProgressBar } from './ProgressBar'
 import styles from './assessment-results.module.scss'
 
 export interface AssessmentData {
@@ -50,14 +50,30 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({ data }) =>
     }
   }
 
-  const goToScreen = (index: number) => {
-    setCurrentScreen(index)
+  const handleTap = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const tapX = event.clientX - rect.left
+    const screenWidth = rect.width
+    
+    // If tap is on left third of screen, go back
+    if (tapX < screenWidth * 0.33 && currentScreen > 0) {
+      prevScreen()
+    }
+    // If tap is on right two-thirds of screen, go forward
+    else if (tapX >= screenWidth * 0.33 && currentScreen < screens.length - 1) {
+      nextScreen()
+    }
   }
 
   const CurrentScreenComponent = screens[currentScreen]
 
   return (
     <div className={styles.container}>
+      <ProgressBar
+        total={screens.length}
+        current={currentScreen}
+      />
+      
       <div className={styles.screenContainer}>
         <AnimatePresence mode="wait">
           <motion.div
@@ -67,6 +83,7 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({ data }) =>
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className={styles.screen}
+            onClick={handleTap}
           >
             <CurrentScreenComponent 
               data={data}
@@ -78,12 +95,6 @@ export const AssessmentResults: React.FC<AssessmentResultsProps> = ({ data }) =>
           </motion.div>
         </AnimatePresence>
       </div>
-      
-      <NavigationDots
-        total={screens.length}
-        current={currentScreen}
-        onDotClick={goToScreen}
-      />
     </div>
   )
 }
