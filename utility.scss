@@ -1,0 +1,30 @@
+@use "sass:math";
+
+// Function for converting a px to rem.
+$rem-base: 16px !default;
+
+@function strip-unit($num) {
+  @return math.div($num, $num * 0 + 1);
+}
+
+@function rem($value, $base-value: $rem-base) {
+  $value: calc(strip-unit($value) / strip-unit($base-value)) * 1rem;
+  @if ($value == 0rem) {
+    $value: 0;
+  } // Turn 0rem into 0
+  @return $value;
+}
+
+//Function for converting a pt to px.
+@function ptpx($ptValue) {
+  $conversion-factor: 1.33333; // 1pt = 1.33333px (approximate conversion factor)
+
+  @return $ptValue * $conversion-factor + px;
+}
+
+//Function for converting a pt to rem
+@function ptrem($ptValue) {
+  $conversion-factor: 0.0833; // 1pt = 0.0833rem  (approximate conversion factor)
+
+  @return strip-unit($ptValue) * $conversion-factor + rem;
+}

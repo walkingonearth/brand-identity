@@ -1,0 +1,114 @@
+// Greyscale
+$white: #ffffff;
+$lightest-grey: #e1e1e1;
+$off-white: #fcfcfc;
+$light-grey: #f1f1f1;
+$grey: #c4c4c4;
+$grey-600: #666666;
+$dark-grey: #808080;
+$black: #212121;
+$dark-shade-grey: #000000;
+$dark-charcoal: #323232;
+$bleached-silk: #f2f2f2;
+$cerebral-grey: #ccc;
+$super-silver: #eee;
+$light-charcoal: #4d4d4d;
+
+// Primary
+$cream: #eaeae0;
+$darker-cream: #e5e5dc;
+$pink: #e5c7ea;
+$blue: #7fb8ea;
+$deep-blue: #1057e5;
+
+// Pillars
+$purple: #bec0e1;
+$dark-pink: #d6b2d9;
+$peach: #ed897f;
+$service-blue: #a3d0e3;
+$energy-blue: #1058e5;
+$resilience-purple: #e5b3ec;
+
+// Secondary
+$light-blue: #a4d0e3;
+$dark-blue: #0f57e5;
+$orange: #c55f36;
+$red: #c3405b;
+$maroon: #af3a52;
+
+// Patterns
+$blue-pattern-primary: #0f57e5;
+$blue-pattern-background: #bec0e1;
+$orange-pattern-primary: #c55f36;
+$orange-pattern-background: #d6b2d9;
+$red-pattern-primary: #c3405b;
+$red-pattern-background: #ed897f;
+$pink-pattern-primary: #7ab3e5;
+$pink-pattern-background: #e5c7ea;
+
+// Others
+$auro-metal: #6c757d;
+$bunting: #16294c;
+$albescent: #f6e8d6;
+$mauve: #e5b3ec;
+$dark-grey-scroll-bg: #888888;
+$dark-grey-scroll-thumb: #555555;
+$brick-red: #bf3c57;
+$brick-red-light: #ed6b64;
+$love-red: #eb1216;
+$sky-blue: rgb(163, 208, 227);
+$royal-blue: #0f57e5;
+$royal-blue-light: #1b5dde;
+$royal-blue-dark: #0840ae;
+$tropical-blue: #c2d7ff;
+$dark-knight: #141b34; // color deep blue already exists in line 20
+
+$colors: (
+  "white": $white,
+  "off-white": $off-white,
+  "light-grey": $light-grey,
+  "grey": $grey,
+  "dark-grey": $dark-grey,
+  "black": $black,
+  "cream": $cream,
+  "darker-cream": $darker-cream,
+  "pink": $pink,
+  "blue": $blue,
+  "purple": $purple,
+  "dark-pink": $dark-pink,
+  "peach": $peach,
+  "light-blue": $light-blue,
+  "dark-blue": $dark-blue,
+  "orange": $orange,
+  "red": $red,
+  "auro-metal": $auro-metal,
+  "bunting": $bunting,
+  "albescent": $albescent,
+  "mauve": $mauve,
+  "dark-grey-scroll-bg": $dark-grey-scroll-bg,
+  "dark-grey-scroll-thumb": $dark-grey-scroll-thumb,
+  "brick-red": $brick-red,
+  "brick-red-light": $brick-red-light,
+  "sky-blue": $sky-blue,
+  "maroon": $maroon,
+  "dark-shade-grey": $dark-shade-grey,
+);
+
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: $color !important;
+  }
+
+  .text-#{$name} {
+    color: $color !important;
+  }
+
+  .link-#{$name} {
+    color: $color !important;
+
+    &:hover,
+    &:focus {
+      color: darken($color, 10%) !important;
+    }
+  }
+}
