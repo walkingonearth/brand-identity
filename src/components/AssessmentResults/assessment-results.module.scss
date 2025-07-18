@@ -1,0 +1,31 @@
+@import '../../styles/global.scss';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.screenContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  
+  @media (max-width: 480px) {
+    padding: 1rem 0.75rem;
+  }
+}
+
+.screen {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+}
